@@ -9,6 +9,7 @@
 - Eslint React Plugin recommended linting rules
 - Flow Type Plugin recommended linting rules
 - Airbnb linting rules for React
+- ES7 Support
 
 ## Requirements
 
@@ -33,37 +34,77 @@
 
 ## Usage
 
-`neutrino-preset-react-linter` can be consumed from the Neutrino API, middleware, or presets. Require this package and plug it into Neutrino:
+`neutrino-preset-react-linter` can be consumed from the Neutrino API, middleware or presets. Require this package and plug it into Neutrino.
+
+###  Function middleware format
 
 ```
-// Using function middleware format
-
 const reactLinter = require('neutrino-preset-react-linter');
 
-neutrino.use(reactLinter, {
-    extends: [],
-    plugins: [],
-    rules: {}
-});
+neutrino.use(reactLinter, options);
 ```
-```
-// Using object or array middleware format
+###  Object or array middleware format
 
+```
 module.exports = {
     use: [
-        ['@neutrinojs/compile-loader', {
-            extends: [],
-            plugins: [],
-            rules: {}
-        }]
+        ['neutrino-preset-react-linter', options]
     ]
 };
 ```
 
-- [`extends`](https://eslint.org/docs/user-guide/configuring#using-a-shareable-configuration-package) an array of strings: each configuration enables a subset of core rules that report common problems
-- [`plugins`](https://eslint.org/docs/user-guide/configuring#configuring-plugins) an array of strings: each plugin exposes additional rules  
-- [`rules`](https://github.com/airbnb/javascript) an object: defines a set of rules
-    - [eslint rules](https://eslint.org/docs/rules/)
-    - [eslint-plugin-react rules](https://eslint.org/docs/rules/)
-    - [eslint-plugin-flowtype rules](https://github.com/gajus/eslint-plugin-flowtype#eslint-plugin-flowtype-rules)
-    - [airbnb-config-eslint rules](https://github.com/airbnb/javascript)
+
+### Options
+
+```
+const options = {
+    test: /\.(js|jsx)$/,
+    include: [], /* Should specify either include or exclude */
+    exclude: [], /* Should specify either include or exclude */
+    eslint: {}
+};
+```
+
+- `test`: Test which files should be linted.
+- `include`: An array of paths to include in linting. Maps to webpack's [`Rule.include`](https://webpack.js.org/configuration/module/#rule-include)
+- `exclude`: An array of paths to exclude from linting. Maps to webpack's [`Rule.exclude`](https://webpack.js.org/configuration/module/#rule-exclude)
+- `eslint`: An ESLint CLIEngine configuration object for configuring ESLint. Use this to configure rules, plugins, and other [ESLint options](http://eslint.org/docs/user-guide/configuring).
+
+All the options passed will override the default options except for `eslint.extends` and `eslint.plugins` which will extend them.
+
+### Default Options
+```
+{
+    test: neutrino.regexFromExtensions(neutrino.options.extensions),
+    eslint: {
+        cwd: neutrino.options.root,
+        useEslintrc: false,
+        root: true,
+        extensions: neutrino.options.extensions,
+        extends: [
+            'eslint:recommended',
+            'plugin:react/recommended',
+            'airbnb',
+        ],
+        plugins: [
+            'react',
+            'flowtype',
+        ],
+        envs: 'es6',
+        parser: 'babel-eslint',
+        parserOptions: {
+            ecmaVersion: 2017,
+            sourceType: 'module',
+            ecmaFeatures: {
+                modules: true,
+                jsx: true,
+            },
+        },
+        settings: {
+            flowtype: {
+                onlyFilesWithFlowAnnotation: false,
+            },
+        },
+    },
+}
+```
