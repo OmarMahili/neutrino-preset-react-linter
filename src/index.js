@@ -1,51 +1,28 @@
 const eslint = require('@neutrinojs/eslint');
 
 
-const defaultOptions = {
-    extends: [],
-    plugins: [],
-    rules: {},
-};
-
-module.exports = (neutrino, opts = defaultOptions) => {
-    const defaultExtendsConfigs = [
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'airbnb',
-    ];
-    const extendsConfigs = defaultExtendsConfigs
-        .concat(opts.extends)
+module.exports = (neutrino, opts = {}) => {
+    const extend = (arr1, arr2) => arr1
+        .concat(arr2)
         .filter((v, i, a) => a.indexOf(v) === i);
 
-    const defaultRules = {};
-    const rules = Object.assign(
-        defaultRules,
-        opts.rules,
-    );
-
-    const defaultPlugins = [
-        'react',
-        'flowtype',
-    ];
-    const plugins = defaultPlugins
-        .concat(opts.plugins)
-        .filter((v, i, a) => a.indexOf(v) === i);
-
-    neutrino.use(eslint, {
+    const defaultOpts = {
         test: neutrino.regexFromExtensions(neutrino.options.extensions),
-        include: [],
-        exclude: [],
         eslint: {
             cwd: neutrino.options.root,
             useEslintrc: false,
             root: true,
             extensions: neutrino.options.extensions,
-            extends: extendsConfigs,
-            plugins,
-            baseConfig: {},
-            envs: [
-                'es6',
+            extends: [
+                'eslint:recommended',
+                'plugin:react/recommended',
+                'airbnb',
             ],
+            plugins: [
+                'react',
+                'flowtype',
+            ],
+            envs: 'es6',
             parser: 'babel-eslint',
             parserOptions: {
                 ecmaVersion: 2017,
@@ -60,8 +37,12 @@ module.exports = (neutrino, opts = defaultOptions) => {
                     onlyFilesWithFlowAnnotation: false,
                 },
             },
-            globals: [],
-            rules,
         },
-    });
+    };
+
+    const options = Object.assign({}, defaultOpts, opts);
+    options.extends = extend(defaultOpts.extends, opts.extends);
+    options.plugins = extend(defaultOpts.plugins, opts.plugins);
+
+    neutrino.use(eslint, options);
 };
