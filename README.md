@@ -84,11 +84,11 @@ All the options passed will override the default options except for `eslint.exte
         extends: [
             'eslint:recommended',
             'plugin:react/recommended',
-            'airbnb',
+            'airbnb'
         ],
         plugins: [
             'react',
-            'flowtype',
+            'flowtype'
         ],
         envs: 'es6',
         parser: 'babel-eslint',
@@ -97,14 +97,21 @@ All the options passed will override the default options except for `eslint.exte
             sourceType: 'module',
             ecmaFeatures: {
                 modules: true,
-                jsx: true,
-            },
+                jsx: true
+            }
         },
         settings: {
             flowtype: {
-                onlyFilesWithFlowAnnotation: false,
-            },
-        },
-    },
+                onlyFilesWithFlowAnnotation: false
+            }
+        }
+    }
 }
 ```
+
+### Supported Rules
+
+- [`eslint`](https://eslint.org/docs/rules/)
+- [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+- [`eslint-plugin-flowtype`](https://github.com/gajus/eslint-plugin-flowtype#eslint-plugin-flowtype-rules)
+- [`airbnb-config-eslint`](https://github.com/airbnb/javascript)
