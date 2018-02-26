@@ -20,6 +20,7 @@
         "recommended"
     ],
     "scripts": {
+        "prepare": "npm run build",
         "build": "neutrino build",
         "lint": "neutrino lint"
     },
