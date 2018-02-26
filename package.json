@@ -2,7 +2,10 @@
     "name": "neutrino-preset-react-linter",
     "description": "Neutrino preset packaging a set of linting rules for React development",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "build/index.js",
+    "files": [
+        "build"
+    ],
     "license": "MIT",
     "author": "Omar Mahili <omar.mahili@gmail.com>",
     "keywords": [
