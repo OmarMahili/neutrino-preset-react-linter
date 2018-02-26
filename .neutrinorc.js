@@ -8,7 +8,8 @@ module.exports = {
             }
         }],
         ['@neutrinojs/library', {
-            name: 'neutrino-preset-react-linter'
+            name: 'neutrino-preset-react-linter',
+            target: 'node'
         }]
     ]
 };
