@@ -1,28 +1,27 @@
 {
     "name": "neutrino-preset-react-linter",
-    "description": "Neutrino preset packaging a set of linting rules for React development",
     "version": "1.0.0",
-    "main": "build/index.js",
-    "files": [
-        "build"
+    "description": "Neutrino preset packaging a set of linting rules for React development",
+    "keywords": [
+        "airbnb",
+        "babel-eslint",
+        "eslint",
+        "flowtype",
+        "linter",
+        "neutrino",
+        "neutrino-preset",
+        "react"
     ],
     "license": "MIT",
     "author": "Omar Mahili <omar.mahili@gmail.com>",
-    "keywords": [
-        "neutrino",
-        "neutrino-preset",
-        "react",
-        "linter",
-        "eslint",
-        "babel-eslint",
-        "airbnb",
-        "flowtype",
-        "recommended"
+    "files": [
+        "build"
     ],
+    "main": "build/index.js",
     "scripts": {
-        "prepare": "npm run build",
         "build": "neutrino build",
-        "lint": "neutrino lint"
+        "lint": "neutrino lint",
+        "prepare": "npm run build"
     },
     "dependencies": {
         "@neutrinojs/eslint": "^8.0.0",
