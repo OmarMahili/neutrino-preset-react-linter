@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter.svg?branch=master)](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter)
+[![Generic badge](https://img.shields.io/badge/Neutrino-v8.0.0-green.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://shields.io/)
+
 # Neutrino React Linter Preset
 
 `neutrino-preset-react-linter` is a Neutrino preset which packages a set of linting rules for React development
