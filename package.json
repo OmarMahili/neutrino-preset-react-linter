@@ -21,7 +21,8 @@
     "scripts": {
         "build": "neutrino build",
         "lint": "neutrino lint",
-        "prepare": "npm run build"
+        "prepare": "npm run build",
+        "test": "neutrino test"
     },
     "dependencies": {
         "@neutrinojs/eslint": "^8.0.0",
