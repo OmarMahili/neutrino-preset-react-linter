@@ -2,6 +2,7 @@ module.exports = {
     use: [
         ['@neutrinojs/airbnb-base', {
             eslint: {
+                env: ["mocha"],
                 rules: {
                     indent: ["error", 4]
                 }
@@ -10,6 +11,7 @@ module.exports = {
         ['@neutrinojs/library', {
             name: 'neutrino-preset-react-linter',
             target: 'node'
-        }]
+        }],
+        '@neutrinojs/mocha'
     ]
 };
