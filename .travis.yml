@@ -8,3 +8,4 @@ deploy:
   on:
     tags: true
     repo: OmarMahili/neutrino-preset-react-linter
+    branch: master
