@@ -1,6 +1,6 @@
 language: node_js
 node_js: "8.9.1"
-before_deploy: yarn install
+before_deploy: npm install -g neutrino@^8.0.0
 deploy:
   provider: npm
   email: omar.mahili@gmail.com
