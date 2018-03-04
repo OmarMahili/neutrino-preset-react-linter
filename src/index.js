@@ -1,9 +1,10 @@
 const eslint = require('@neutrinojs/eslint');
 
 
-module.exports = (neutrino, opts = { eslint: { extends: [], plugins: [] } }) => {
+module.exports = (neutrino, opts = {}) => {
     const extend = (arr1, arr2) => arr1
-        .concat(arr2)
+        .concat(arr2 || [])
+        // remove duplicates
         .filter((v, i, a) => a.indexOf(v) === i);
 
     const defaultOpts = {
@@ -41,8 +42,8 @@ module.exports = (neutrino, opts = { eslint: { extends: [], plugins: [] } }) => 
     };
 
     const options = Object.assign({}, defaultOpts, opts);
-    options.eslint.extends = extend(defaultOpts.eslint.extends, opts.eslint.extends);
-    options.eslint.plugins = extend(defaultOpts.eslint.plugins, opts.eslint.plugins);
+    options.eslint.extends = extend(defaultOpts.eslint.extends, (opts.eslint || {}).extends);
+    options.eslint.plugins = extend(defaultOpts.eslint.plugins, (opts.eslint || {}).plugins);
 
     neutrino.use(eslint, options);
 };
