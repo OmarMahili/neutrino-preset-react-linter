@@ -1,8 +1,8 @@
 language: node_js
 node_js: "8.9.1"
-before_deploy: npm install -g neutrino@^8.0.0
 deploy:
   provider: npm
+  skip_cleanup: true
   email: omar.mahili@gmail.com
   api_key:
     secure: d8P0nrbM2GLdgdZDnXIGbIwZoP/Ze5LAtCJAQFgeju35af3l2L1tHGUYHH6xvJ9lWLw/b/ZUjFBHnb6CAhpJ8kSeU9FpZ/5QoPb403+S+CsssNXrcYv2qFrFk0b04Cd8fBIV0+bd7d3/5LJXV9oFA3CLzhNN87KhfSOXK3TCljpd+BLslcTPqVnCoPhW2fEf3oHX5Ciy9tyvuLNCPlRnjBijYFMYCT4nPIzzH53kwNRUqQT4FYwVKqzOQWKCnpPy1W1YXPXp1nZF7qSa/pqXQaCAvqicNHb1RVMXbDaRECFFhIaGe4/8zt1AYVs8rfuUOGUsrB7YqhcucgUM/R05z6e1PcGSNHQ58KR7+b70t1qbaK5mfRh5u8TgiB3t1VM3JVV9gZT21FlKCFTTqa1W2JWat0df54PP9KAymAhoJAsmf/uhYQbv9nqpAsGFRAz/w24rK0tFPDiIvc4T7Oqez4eFumrSIWS4rNHXfDIZLBsTUpw8ksAPiGZDf+pbHkW5ZOGK9uDnsXc9Ysl6U/ks7iayDsVCJY3mm07cCYmF8vJeKmZExZW8eNnInyb/PJDS78oSzq8+3KMsEn+44Ohj2Volz1NqtGAPHR4QYNlbVlUJJxgAatgwWBEivLm64ntRepNpGb5stnW6sTrnQctFwmAjbG9oIqWvefqI4BS5his=
