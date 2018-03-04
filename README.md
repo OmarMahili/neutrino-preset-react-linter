@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter.svg?branch=master)](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter)
-[![Generic badge](https://img.shields.io/badge/Neutrino-v8.0.0-green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Neutrino-v8.0.0-blue.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)](https://shields.io/)
 
 # Neutrino React Linter Preset
 
@@ -45,6 +45,7 @@
 ```
 const reactLinter = require('neutrino-preset-react-linter');
 
+// neutrino.use(reactLinter) for default options
 neutrino.use(reactLinter, options);
 ```
 ###  Object or array middleware format
@@ -52,6 +53,7 @@ neutrino.use(reactLinter, options);
 ```
 module.exports = {
     use: [
+        // 'neutrino-preset-react-linter' for default options
         ['neutrino-preset-react-linter', options]
     ]
 };
