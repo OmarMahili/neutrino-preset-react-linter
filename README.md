@@ -27,7 +27,7 @@
 ### Yarn
 
 ```
-> yarn add --dev neutrino neutrino-preset-react-linter
+> yarn add --dev neutrino-preset-react-linter
 ```
 
 ### npm
