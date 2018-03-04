@@ -1,6 +1,6 @@
 {
     "name": "neutrino-preset-react-linter",
-    "version": "1.0.0-alpha",
+    "version": "1.0.0-alpha.1",
     "description": "Neutrino preset packaging a set of linting rules for React development",
     "keywords": [
         "airbnb",
