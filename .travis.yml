@@ -9,3 +9,4 @@ deploy:
     tags: true
     repo: OmarMahili/neutrino-preset-react-linter
     branch: master
+before_deploy: yarn install
