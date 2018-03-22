@@ -2,16 +2,16 @@ module.exports = {
     use: [
         ['@neutrinojs/airbnb-base', {
             eslint: {
-                env: ["mocha"],
+                env: ['mocha'],
                 rules: {
-                    indent: ["error", 4]
-                }
-            }
+                    indent: [2, 4],
+                },
+            },
         }],
         ['@neutrinojs/library', {
             name: 'neutrino-preset-react-linter',
-            target: 'node'
+            target: 'node',
         }],
-        '@neutrinojs/mocha'
-    ]
+        '@neutrinojs/mocha',
+    ],
 };
