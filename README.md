@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter.svg?branch=master)](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter)
 [![Generic badge](https://img.shields.io/badge/Neutrino-v8.0.0-blue.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)](https://shields.io/)
+[![NPM downloads](https://img.shields.io/npm/dm/neutrino-preset-react-linter.svg?style=flat)](https://npmjs.com/package/neutrino-preset-react-linter)
 
 # Neutrino React Linter Preset
 
