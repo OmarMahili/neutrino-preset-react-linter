@@ -1,29 +1,20 @@
 const eslint = require('@neutrinojs/eslint');
 
-
 module.exports = (neutrino, opts = {}) => {
-    const extend = (arr1, arr2) => arr1
-        .concat(arr2 || [])
-        // remove duplicates
-        .filter((v, i, a) => a.indexOf(v) === i);
-
     const defaultOpts = {
-        test: neutrino.regexFromExtensions(neutrino.options.extensions),
         eslint: {
-            cwd: neutrino.options.root,
-            useEslintrc: false,
-            root: true,
-            extensions: neutrino.options.extensions,
-            extends: [
-                'eslint:recommended',
-                'plugin:react/recommended',
-                'airbnb',
-            ],
+            baseConfig: {
+                extends: [
+                    'eslint:recommended',
+                    'plugin:react/recommended',
+                    'plugin:flowtype/recommended',
+                    'airbnb',
+                ],
+            },
             plugins: [
                 'react',
                 'flowtype',
             ],
-            envs: 'es6',
             parser: 'babel-eslint',
             parserOptions: {
                 ecmaVersion: 2017,
@@ -33,17 +24,16 @@ module.exports = (neutrino, opts = {}) => {
                     jsx: true,
                 },
             },
-            settings: {
-                flowtype: {
-                    onlyFilesWithFlowAnnotation: false,
-                },
+            rules: {
+                indent: [2, 4],
+                'react/jsx-indent': [2, 4],
+                'flowtype/no-types-missing-file-annotation': 0,
+                'flowtype/delimiter-dangle': [2, 'always-multiline'],
+                'flowtype/semi': 2,
+                'flowtype/type-id-match': [2, '^([A-Z][a-z0-9]*)+$'],
             },
         },
     };
 
-    const options = Object.assign({}, defaultOpts, opts);
-    options.eslint.extends = extend(defaultOpts.eslint.extends, (opts.eslint || {}).extends);
-    options.eslint.plugins = extend(defaultOpts.eslint.plugins, (opts.eslint || {}).plugins);
-
-    neutrino.use(eslint, options);
+    neutrino.use(eslint, eslint.merge(defaultOpts, opts));
 };
