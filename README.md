@@ -13,6 +13,7 @@
 - Eslint React Plugin recommended linting rules
 - Flow Type Plugin recommended linting rules
 - Airbnb linting rules for React
+- Consistent rules among plugins (needs more testing, especially with flow)
 - ES7 Support
 
 ## Requirements
@@ -38,9 +39,12 @@
 
 ## Usage
 
-`neutrino-preset-react-linter` can be consumed from the Neutrino API, middleware or presets. Require this package and plug it into Neutrino.
+- Require this package and plug it into Neutrino
+- Add an eslintrc configuration file
 
-###  Function middleware format
+`neutrino-preset-react-linter` can be consumed from the Neutrino API, middleware or presets.
+
+### Function middleware format
 
 ```
 const reactLinter = require('neutrino-preset-react-linter');
@@ -48,7 +52,8 @@ const reactLinter = require('neutrino-preset-react-linter');
 // neutrino.use(reactLinter) for default options
 neutrino.use(reactLinter, options);
 ```
-###  Object or array middleware format
+
+### Object or array middleware format
 
 ```
 module.exports = {
@@ -59,6 +64,16 @@ module.exports = {
 };
 ```
 
+### Eslint configuration file
+
+```
+// .eslintrc.js
+const { Neutrino } = require('neutrino');
+
+module.exports = Neutrino()
+    .use('.neutrinorc.js')
+    .call('eslintrc');
+```
 
 ### Options
 
@@ -78,40 +93,40 @@ const options = {
 
 All the options passed will override the default options except for `eslint.extends` and `eslint.plugins` which will extend them.
 
-### Default Options
+### Default options
 ```
 {
-    test: neutrino.regexFromExtensions(neutrino.options.extensions),
     eslint: {
-        cwd: neutrino.options.root,
-        useEslintrc: false,
-        root: true,
-        extensions: neutrino.options.extensions,
-        extends: [
-            'eslint:recommended',
-            'plugin:react/recommended',
-            'airbnb'
-        ],
+        baseConfig: {
+            extends: [
+                'eslint:recommended',
+                'plugin:react/recommended',
+                'plugin:flowtype/recommended',
+                'airbnb',
+            ],
+        },
         plugins: [
             'react',
-            'flowtype'
+            'flowtype',
         ],
-        envs: 'es6',
         parser: 'babel-eslint',
         parserOptions: {
             ecmaVersion: 2017,
             sourceType: 'module',
             ecmaFeatures: {
                 modules: true,
-                jsx: true
-            }
+                jsx: true,
+            },
         },
-        settings: {
-            flowtype: {
-                onlyFilesWithFlowAnnotation: false
-            }
-        }
-    }
+        rules: {
+            indent: [2, 4],
+            'react/jsx-indent': [2, 4],
+            'flowtype/no-types-missing-file-annotation': 0,
+            'flowtype/delimiter-dangle': [2, 'always-multiline'],
+            'flowtype/semi': 2,
+            'flowtype/type-id-match': [2, '^([A-Z][a-z0-9]*)+$'],
+        },
+    },
 }
 ```
 
