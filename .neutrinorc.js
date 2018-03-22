@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
     use: [
         ['@neutrinojs/airbnb-base', {
             eslint: {
@@ -14,11 +14,4 @@
         }],
         '@neutrinojs/mocha',
     ],
-};*/
-
-const reactLinter = require('@neutrinojs/airbnb-base');
-
-// neutrino.use(reactLinter) for default options
-neutrino.use(reactLinter, options);
-
-module.exports = neutrino;
+};
