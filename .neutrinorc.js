@@ -2,6 +2,7 @@ module.exports = {
     use: [
         ['@neutrinojs/airbnb-base', {
             eslint: {
+                envs: ['mocha'],
                 rules: {
                     indent: [2, 4],
                 },
