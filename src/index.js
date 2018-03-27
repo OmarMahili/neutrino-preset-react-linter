@@ -27,6 +27,7 @@ module.exports = (neutrino, opts = {}) => {
             rules: {
                 indent: [2, 4],
                 'react/jsx-indent': [2, 4],
+                'react/jsx-indent-props': [2, 4],
                 'flowtype/no-types-missing-file-annotation': 0,
                 'flowtype/delimiter-dangle': [2, 'always-multiline'],
                 'flowtype/semi': 2,
