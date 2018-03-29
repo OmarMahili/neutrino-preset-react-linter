@@ -10,9 +10,9 @@
 ## Features
 
 - Ready on the go and extensible linter for React development
-- Eslint recommended linting rules
-- Eslint React Plugin recommended linting rules
-- Flow Type Plugin recommended linting rules
+- Eslint recommended rules
+- Eslint React Plugin recommended rules
+- Flow Type Plugin recommended rules
 - Airbnb linting rules for React
 - Consistent rules among plugins (needs more testing, especially with flow)
 - ES7 Support
@@ -41,7 +41,8 @@
 ## Usage
 
 - Require this package and plug it into Neutrino
-- Add an eslintrc configuration file
+- Add an eslintrc configuration file (optional)
+- Add a lint script to your package.json (optional)
 
 `neutrino-preset-react-linter` can be consumed from the Neutrino API, middleware or presets.
 
@@ -92,7 +93,31 @@ const options = {
 - `exclude`: An array of paths to exclude from linting. Maps to webpack's [`Rule.exclude`](https://webpack.js.org/configuration/module/#rule-exclude)
 - `eslint`: An ESLint CLIEngine configuration object for configuring ESLint. Use this to configure rules, plugins, and other [ESLint options](http://eslint.org/docs/user-guide/configuring).
 
-All the options passed will override the default options except for `eslint.extends` and `eslint.plugins` which will extend them.
+
+### Lint script
+
+Add a lint script to your package.json:
+
+```
+{
+    "scripts": {
+        "lint": "neutrino lint"
+    }
+}
+```
+
+Run it with yarn:
+
+```
+> yarn lint
+```
+
+or npm:
+
+```
+> npm run lint
+```
+
 
 ### Default options
 ```
