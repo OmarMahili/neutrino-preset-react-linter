@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter.svg?branch=master)](https://travis-ci.org/OmarMahili/neutrino-preset-react-linter)
+[![Build Status](https://travis-ci.org/omarmahili/neutrino-preset-react-linter.svg?branch=master)](https://travis-ci.org/omarmahili/neutrino-preset-react-linter)
 [![Neutrino v8.0.0](https://img.shields.io/badge/Neutrino-v8.0.0-blue.svg)](https://shields.io/)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://shields.io/)
 [![NPM downloads](https://img.shields.io/npm/dm/neutrino-preset-react-linter.svg?style=flat)](https://npmjs.com/package/neutrino-preset-react-linter)
@@ -11,10 +11,11 @@
 
 - Ready on the go and extensible linter for React development
 - Eslint recommended rules
-- Eslint React Plugin recommended rules
-- Flow Type Plugin recommended rules
-- Airbnb linting rules for React
-- Consistent rules among plugins (needs more testing, especially with flow)
+- Eslint React Plugin (recommended rules on by default)
+- Flow Type Plugin (recommended rules on by default)
+- Airbnb recommended rules (React and JS)
+- [Unpluggable recommended rules](#options)
+- Consistent rules among plugins
 - ES7 Support
 
 ## Requirements
@@ -84,15 +85,24 @@ const options = {
     test: /\.(js|jsx)$/,
     include: [], /* Should specify either include or exclude */
     exclude: [], /* Should specify either include or exclude */
-    eslint: {}
+    eslint: {},
+    recommendedRules: {
+        // disable react plugin and flowtype plugin recommended rules
+        eslintReact: false,
+        flowtype: false,
+    }
 };
 ```
 
 - `test`: Test which files should be linted.
-- `include`: An array of paths to include in linting. Maps to webpack's [`Rule.include`](https://webpack.js.org/configuration/module/#rule-include)
-- `exclude`: An array of paths to exclude from linting. Maps to webpack's [`Rule.exclude`](https://webpack.js.org/configuration/module/#rule-exclude)
+- `include`: An array of paths to include in linting. Maps to webpack's [`Rule.include`](https://webpack.js.org/configuration/module/#rule-include).
+- `exclude`: An array of paths to exclude from linting. Maps to webpack's [`Rule.exclude`](https://webpack.js.org/configuration/module/#rule-exclude).
 - `eslint`: An ESLint CLIEngine configuration object for configuring ESLint. Use this to configure rules, plugins, and other [ESLint options](http://eslint.org/docs/user-guide/configuring).
-
+- `recommendedRules`: A configuration object for enabling/disabling recommended rules by this preset
+    - `eslint`: A boolean (default `true`).
+    - `eslintReact`: A boolean (default `true`).
+    - `flowtype`: A boolean (default `true`).
+    - `airbnb`: A boolean (default `true`).
 
 ### Lint script
 
