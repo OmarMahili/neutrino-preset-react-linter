@@ -5,6 +5,13 @@ module.exports = {
                 envs: ['mocha'],
                 rules: {
                     indent: [2, 4],
+                    // remove ForOfStatement from restricted syntax
+                    "no-restricted-syntax": [
+                        "error",
+                        "ForInStatement",
+                        "LabeledStatement",
+                        "WithStatement",
+                    ],
                 },
             },
         }],
