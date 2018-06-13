@@ -11,8 +11,8 @@
 
 - Ready on the go and extensible linter for React development
 - Eslint recommended rules
-- Eslint React Plugin (recommended rules on by default)
-- Flow Type Plugin (recommended rules on by default)
+- Eslint React Plugin (recommended rules enabled by default)
+- Flow Type Plugin (recommended rules enabled by default)
 - Airbnb recommended rules (React and JS)
 - [Unpluggable recommended rules](#options)
 - Consistent rules among plugins
