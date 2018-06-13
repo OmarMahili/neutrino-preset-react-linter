@@ -3,6 +3,11 @@ import reactLinter from '../src';
 
 describe('react-linter', () => {
     it('should not throw errors', () => {
-        neutrino().use(reactLinter);
+        neutrino().use(reactLinter, {
+            recommendedRules: {
+                eslintReact: false,
+                flowtype: false,
+            },
+        });
     });
 });
